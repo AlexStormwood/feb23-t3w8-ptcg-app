@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 export default function CardSearchByName() {
 
 	// search results 
-	const [searchResults, setSearchResults] = useState();
+	const [searchResults, setSearchResults] = useState([]);
 
 	// api URL 
 	const {api} = useContext(ApiContext);
@@ -15,7 +15,7 @@ export default function CardSearchByName() {
 	const {pokemonName} = useParams();
 
 	// api key 
-	let apiKey = "";
+	let apiKey = process.env.REACT_APP_API_KEY;
 
 	useEffect(() => {
 		console.log("Card search component has mounted! Making a fetch request now...");
@@ -29,13 +29,24 @@ export default function CardSearchByName() {
 					'X-Api-Key': apiKey
 				}
 			});
+
+			let responseData = await response.json();
+
+			setSearchResults(responseData.data);
 		}
+
+		apiRequest();
 
 	}, []);
 
 	return (
 		<div>
 			<h1>Card Search</h1>
+			{searchResults.length > 0 && 
+			<div>
+				<h1>{searchResults[0].name} - {searchResults[0].id}</h1>
+			</div>
+			}
 		</div>
 	)
 }
