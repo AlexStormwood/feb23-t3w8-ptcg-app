@@ -30,6 +30,8 @@ export default function CardSearchByName() {
 					'X-Api-Key': apiKey
 				}
 			});
+			
+			console.log(response);
 
 			let responseData = await response.json();
 
