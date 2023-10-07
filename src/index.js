@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CardSearchByName from './pages/CardSearchByName';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavSearchBar from './components/NavSearchBar';
 
 
 
@@ -17,6 +18,10 @@ root.render(
     <ApiProvider>
       
       <BrowserRouter>
+
+        {/* Content shown on ALL routes goes here */}
+        <NavSearchBar />
+
         <Routes>
           {/* Homepage route  */}
           <Route path="/" element={<App />}/>
