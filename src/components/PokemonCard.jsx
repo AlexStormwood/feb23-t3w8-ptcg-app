@@ -5,8 +5,8 @@ import Card from 'react-bootstrap/Card';
 
 function PokemonCard(props) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={props.imageUrl} />
+    <Card style={{ width: '18rem'}}>
+      <Card.Img variant="top" src={props.imageUrl} style={{maxHeight: 342, maxWidth: 245, marginTop: 15}} className="mx-auto" />
       <Card.Body>
         <Card.Title>
 			{props.cardTitle}
